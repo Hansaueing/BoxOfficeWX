@@ -8,6 +8,7 @@
 
 <script>
   import wepy from 'wepy'
+  import Service from '../serviceModule/NetworkService'
 
   export default class Index extends wepy.page {
     config = {
@@ -15,6 +16,9 @@
     }
     onLoad() {
       console.log('onLoad')
+      Service.getDayInfoArray()
+      Service.getWeekendInfoArray()
+      Service.getWeekInfoArray()
     }
   }
 </script>
