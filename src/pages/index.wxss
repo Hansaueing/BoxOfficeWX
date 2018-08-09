@@ -50,5 +50,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
+}
+.imageEmail {
+    position: fixed; 
+    width: 40rpx;
+    height: 40rpx;
+    right: 10%; 
+    bottom: 4%;
+}
+.imageStar {
+    position: fixed; 
+    width: 40rpx;
+    height: 40rpx;
+    right: 4%;
+    bottom: 5%
 }

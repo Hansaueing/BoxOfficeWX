@@ -31,5 +31,6 @@
             <template is="carTemp" data="{{...dataItem}}"></template>
         </block>
     </view>
-    
+    <image class="imageEmail" src="image/mail.png" mode="top left"></image>
+    <image class="imageStar" src="image/star.png" mode="aspectFit"></image>
 </view>
