@@ -1,33 +1,33 @@
 import Service from '../serviceModule/NetworkService'
 Page({
     data: {
-        dayInfoArray: [
-            // {
-            //     "cur": 60.27,
-            //     "days": 21,
-            //     "name": "摩天营救",
-            //     "sum": 66156.24
-            // }
-        ],
-
-
-        dataList: [
-            { id: 1, name: 'title1' },
-            { id: 2, name: 'title2' },
-            { id: 3, name: 'title3' },
-            { id: 4, name: 'title431232133333333333aaa2zsssas' },
-            { id: 5, name: 'title5' },
-          ],
+        dayInfoArray: [],
     },
+    netType: "",
     onLoad(){
         console.log('onLoad');
-        Service.getDayInfoArray();
-        Service.getWeekendInfoArray();
-        Service.getWeekInfoArray();
+        wx.onNetworkStatusChange((res)=> {
+            console.log(res.networkType)
+            this.netType = res.networkType;
+            if(res.isConnected && !Service.getDayInfo().length){
+                this._requestData();
+            }
+        })
+        wx.getNetworkType({
+            success:(result)=>{
+                console.log(result.networkType);
+                this.netType = result.networkType;
+            }
+        });
+        this._requestData();
     },
     onDailyClick:function(){
         console.log("onDailyClick");
         let dailyInfo = Service.getDayInfo();
+        if(!dailyInfo.length){
+            this._toastShow();
+            return;
+        }
         for(let info of dailyInfo){
             info["dayhide"] = false;
             info["weekendhide"] = true;
@@ -41,6 +41,10 @@ Page({
     onWeekendClick:function(){
         console.log("onWeekendClick");
         let weekendInfo = Service.getWeekendInfo();
+        if(!weekendInfo.length){
+            this._toastShow();
+            return;
+        }
         for(let info of weekendInfo){
             info["dayhide"] = true;
             info["weekendhide"] = false;
@@ -54,6 +58,10 @@ Page({
     onWeekClick:function(){
         console.log("onWeekClick");
         let weekInfo = Service.getWeekInfo();
+        if(!weekInfo.length){
+            this._toastShow();
+            return;
+        }
         for(let info of weekInfo){
             info["dayhide"] = true;
             info["weekendhide"] = true;
@@ -64,4 +72,17 @@ Page({
             dayInfoArray: weekInfo
         })
     },
+
+    _toastShow(){
+        wx.showToast({
+            title: '网络被偷走了、、、',
+            icon: 'none',
+            duration: 500
+          })
+    },
+    _requestData(){
+        Service.getDayInfoArray();
+        Service.getWeekendInfoArray();
+        Service.getWeekInfoArray();
+    }
   })
