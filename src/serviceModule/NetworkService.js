@@ -4,6 +4,17 @@ class Service {
     weekendInfo = []
     weekInfo = []
 
+    getDayInfo(){
+        return this.dayInfo;
+    }
+
+    getWeekendInfo(){
+        return this.weekendInfo;
+    }
+
+    getWeekInfo(){
+        return this.weekInfo;
+    }
     
     getDayInfoArray() {
         wx.request({
@@ -12,8 +23,8 @@ class Service {
                 'content-type': 'application/json'
             },
             success:(res) => {
-                console.log(res.data)
-                this.dayInfo = res.data
+                console.dir(res.data.result)
+                this.dayInfo = res.data.result
             }
         })
     }
@@ -25,8 +36,8 @@ class Service {
                 'content-type': 'application/json'
             },
             success:(res) => {
-                console.log(res.data)
-                this.weekendInfo = res.data
+                console.dir(res.data.result)
+                this.weekendInfo = res.data.result
             }
         })
     }
@@ -38,8 +49,8 @@ class Service {
                 'content-type': 'application/json'
             },
             success:(res) => {
-                console.log(res.data)
-                this.weekInfo = res.data
+                console.dir(res.data.result)
+                this.weekInfo = res.data.result
             }
         })
     }

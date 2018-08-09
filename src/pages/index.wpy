@@ -1,24 +1,22 @@
 <style lang="less">
 </style>
 <template>
-  <view class="container">
-    
-  </view>
+  
 </template>
 
 <script>
   import wepy from 'wepy'
-  import Service from '../serviceModule/NetworkService'
+  // import Service from '../serviceModule/NetworkService'
 
   export default class Index extends wepy.page {
     config = {
       navigationBarTitleText: '票房动态'
     }
     onLoad() {
-      console.log('onLoad')
-      Service.getDayInfoArray()
-      Service.getWeekendInfoArray()
-      Service.getWeekInfoArray()
+      console.log('onLoad11')
+      // Service.getDayInfoArray()
+      // Service.getWeekendInfoArray()
+      // Service.getWeekInfoArray()
     }
   }
 </script>

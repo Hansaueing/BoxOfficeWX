@@ -1,0 +1,35 @@
+<view class="page">
+    <view class="viewclass">
+        <button class="buttonForm" size="mini"  bindtap="onDailyClick">
+            实时票房
+        </button>
+        <button class="buttonForm" size="mini"  bindtap="onWeekendClick">
+            周末票房
+        </button>
+        <button class="buttonForm" size="mini"  bindtap="onWeekClick">
+            本周票房
+        </button>
+    </view>
+
+    <template name="carTemp">
+        <view class="adapter_item">
+            <view class="item_content">
+                <text class="item_title">{{name}}</text>
+                <text class="item" hidden="{{dayhide}}">今日票房:{{cur}}万</text>
+                <text class="item" hidden="{{dayhide}}">总票房:{{sum}}万</text>
+                <text class="item" hidden="{{weekendhide}}">周末票房:{{weekendSum}}万</text>
+                <text class="item" hidden="{{weekendhide}}">统计日期:{{weekendPeriod}}</text>
+                <text class="item" hidden="{{weekhide}}">本周票房:{{weekSum}}万</text>
+                <text class="item" hidden="{{weekhide}}">统计日期:{{weekPeriod}}</text>
+            </view>
+            <text class="item_day">上映{{days}}天</text>
+        </view>
+    </template>
+
+    <view class="main">
+        <block wx:for="{{dayInfoArray}}" wx:for-item="dataItem">
+            <template is="carTemp" data="{{...dataItem}}"></template>
+        </block>
+    </view>
+    
+</view>
