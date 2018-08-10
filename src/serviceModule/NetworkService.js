@@ -16,15 +16,16 @@ class Service {
         return this.weekInfo;
     }
     
-    getDayInfoArray() {
+    getDayInfoArray(callback) {
         wx.request({
             url: 'https://apicloud.mob.com/boxoffice/day/query?key=12c15698fd0b7&area=CN',
             header: {
                 'content-type': 'application/json'
             },
             success:(res) => {
-                console.dir(res.data.result)
+                // console.dir(res.data.result)
                 this.dayInfo = res.data.result
+                callback.onSuccess();
             }
         })
     }
@@ -36,7 +37,7 @@ class Service {
                 'content-type': 'application/json'
             },
             success:(res) => {
-                console.dir(res.data.result)
+                // console.dir(res.data.result)
                 this.weekendInfo = res.data.result
             }
         })
@@ -49,7 +50,7 @@ class Service {
                 'content-type': 'application/json'
             },
             success:(res) => {
-                console.dir(res.data.result)
+                // console.dir(res.data.result)
                 this.weekInfo = res.data.result
             }
         })

@@ -56,12 +56,12 @@
     width: 40rpx;
     height: 40rpx;
     right: 10%; 
-    bottom: 4%;
+    bottom: 4.5%;
 }
 .imageStar {
     position: fixed; 
     width: 40rpx;
     height: 40rpx;
-    right: 4%;
-    bottom: 5%
+    right: 3%;
+    bottom: 4.8%
 }

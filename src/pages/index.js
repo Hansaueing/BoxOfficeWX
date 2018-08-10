@@ -33,7 +33,7 @@ Page({
             info["weekendhide"] = true;
             info["weekhide"] = true;
         }
-        console.dir(dailyInfo)
+        // console.dir(dailyInfo)
         this.setData({
             dayInfoArray: dailyInfo
         })
@@ -50,7 +50,7 @@ Page({
             info["weekendhide"] = false;
             info["weekhide"] = true;
         }
-        console.dir(weekendInfo);
+        // console.dir(weekendInfo);
         this.setData({
             dayInfoArray: weekendInfo
         })
@@ -67,10 +67,18 @@ Page({
             info["weekendhide"] = true;
             info["weekhide"] = false;
         }
-        console.dir(weekInfo);
+        // console.dir(weekInfo);
         this.setData({
             dayInfoArray: weekInfo
         })
+    },
+
+    onEmailClick:function(){
+        console.log('onEmailClick');
+    },
+
+    onStarClick:function(){
+        console.log('onStarClick');
     },
 
     _toastShow(){
@@ -81,7 +89,12 @@ Page({
           })
     },
     _requestData(){
-        Service.getDayInfoArray();
+        Service.getDayInfoArray({
+            onSuccess:()=>{
+                console.log('Request DailyInfo Success');
+                this.onDailyClick();
+            }
+        });
         Service.getWeekendInfoArray();
         Service.getWeekInfoArray();
     }

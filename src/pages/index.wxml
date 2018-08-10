@@ -31,6 +31,6 @@
             <template is="carTemp" data="{{...dataItem}}"></template>
         </block>
     </view>
-    <image class="imageEmail" src="image/mail.png" mode="top left"></image>
-    <image class="imageStar" src="image/star.png" mode="aspectFit"></image>
+    <image class="imageEmail" src="image/mail.png" mode="aspectFit" bindtap="onEmailClick" hidden = "true"></image>
+    <image class="imageStar" src="image/star_17.png" mode="aspectFit" bindtap="onStarClick" hidden = "true"></image>
 </view>
