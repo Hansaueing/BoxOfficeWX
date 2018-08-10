@@ -31,6 +31,11 @@
             <template is="carTemp" data="{{...dataItem}}"></template>
         </block>
     </view>
-    <image class="imageEmail" src="image/mail.png" mode="aspectFit" bindtap="onEmailClick" hidden = "true"></image>
-    <image class="imageStar" src="image/star_17.png" mode="aspectFit" bindtap="onStarClick" hidden = "true"></image>
+    <image class="imageEmail" src="image/mail.png" mode="aspectFit"  hidend = "false" bindtap="onEmailClick"></image>
+   
+    <text class="describe">原是刚入行时练习的安卓应用,借此重构为小程序,边学边用,砥砺前行</text>
+    <text class="describe">后面闲暇的话,会扩展成和安卓版功能一致</text>
+    <text class="describe">再用React_Native来重构</text>
+    <text class="describe">欢迎来邮,交流学习</text>
+    
 </view>

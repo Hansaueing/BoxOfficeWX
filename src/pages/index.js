@@ -5,6 +5,7 @@ Page({
     },
     netType: "",
     onLoad(){
+
         console.log('onLoad');
         wx.onNetworkStatusChange((res)=> {
             console.log(res.networkType)
@@ -25,7 +26,7 @@ Page({
         console.log("onDailyClick");
         let dailyInfo = Service.getDayInfo();
         if(!dailyInfo.length){
-            this._toastShow();
+            this._toastShow('网络被偷走啦、、、', 800);
             return;
         }
         for(let info of dailyInfo){
@@ -42,7 +43,7 @@ Page({
         console.log("onWeekendClick");
         let weekendInfo = Service.getWeekendInfo();
         if(!weekendInfo.length){
-            this._toastShow();
+            this._toastShow('网络被偷走啦、、、', 800);
             return;
         }
         for(let info of weekendInfo){
@@ -59,7 +60,7 @@ Page({
         console.log("onWeekClick");
         let weekInfo = Service.getWeekInfo();
         if(!weekInfo.length){
-            this._toastShow();
+            this._toastShow('网络被偷走啦、、、', 800);
             return;
         }
         for(let info of weekInfo){
@@ -75,18 +76,22 @@ Page({
 
     onEmailClick:function(){
         console.log('onEmailClick');
+        this._toastShow('hansaueing@163.com', 2000);
     },
 
     onStarClick:function(){
         console.log('onStarClick');
+        // TODO JC
+        // let text = '项目原是刚入行时练习安卓应用,借此重构为小程序项目,边学边用,砥砺前行';
+        // this._toastShow(text, 2000);
     },
 
-    _toastShow(){
+    _toastShow(msg, ms){
         wx.showToast({
-            title: '网络被偷走了、、、',
+            title: msg,
             icon: 'none',
-            duration: 500
-          })
+            duration: ms
+        })
     },
     _requestData(){
         Service.getDayInfoArray({
@@ -97,5 +102,11 @@ Page({
         });
         Service.getWeekendInfoArray();
         Service.getWeekInfoArray();
+    },
+    onShareAppMessage: function() {
+        // 用户点击右上角分享
+        return {
+            title: '票房信息', // 分享标题
+        }
     }
-  })
+})
