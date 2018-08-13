@@ -79,11 +79,11 @@ Page({
         this._toastShow('hansaueing@163.com', 2000);
     },
 
-    onStarClick:function(){
-        console.log('onStarClick');
-        // TODO JC
-        // let text = '项目原是刚入行时练习安卓应用,借此重构为小程序项目,边学边用,砥砺前行';
-        // this._toastShow(text, 2000);
+    onMapClick:function(){
+        console.log('onMapClick');
+        wx.navigateTo({
+            url: 'secondaryUI/Location'
+        });
     },
 
     _toastShow(msg, ms){
