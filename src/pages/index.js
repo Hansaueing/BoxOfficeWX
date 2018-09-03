@@ -5,7 +5,6 @@ Page({
     },
     netType: "",
     onLoad(){
-
         console.log('onLoad');
         wx.onNetworkStatusChange((res)=> {
             console.log(res.networkType)
@@ -34,7 +33,10 @@ Page({
             info["weekendhide"] = true;
             info["weekhide"] = true;
         }
-        // console.dir(dailyInfo)
+        // 按照总票房降序排列
+        dailyInfo.sort(function(a,b){
+            return b.sum - a.sum;
+        });
         this.setData({
             dayInfoArray: dailyInfo
         })
@@ -42,6 +44,10 @@ Page({
     onWeekendClick:function(){
         console.log("onWeekendClick");
         let weekendInfo = Service.getWeekendInfo();
+        if(!weekendInfo){
+            this._toastShow('查询不到数据', 800)
+            return;
+        }
         if(!weekendInfo.length){
             this._toastShow('网络被偷走啦、、、', 800);
             return;
@@ -51,7 +57,6 @@ Page({
             info["weekendhide"] = false;
             info["weekhide"] = true;
         }
-        // console.dir(weekendInfo);
         this.setData({
             dayInfoArray: weekendInfo
         })
@@ -59,6 +64,10 @@ Page({
     onWeekClick:function(){
         console.log("onWeekClick");
         let weekInfo = Service.getWeekInfo();
+        if(!weekInfo){
+            this._toastShow('查询不到数据', 800)
+            return;
+        }
         if(!weekInfo.length){
             this._toastShow('网络被偷走啦、、、', 800);
             return;
