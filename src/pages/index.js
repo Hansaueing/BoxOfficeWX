@@ -20,7 +20,7 @@ Page({
             }
         });
         wx.setNavigationBarTitle({
-            title: '今日票房动态'
+            title: '票房动态'
         });
         this._requestData();
     },
@@ -112,8 +112,8 @@ Page({
                 this.onDailyClick();
             }
         });
-        // Service.getWeekendInfoArray();
-        // Service.getWeekInfoArray();
+        Service.getWeekendInfoArray();
+        Service.getWeekInfoArray();
     },
     onShareAppMessage: function() {
         // 用户点击右上角分享

@@ -1,6 +1,14 @@
 <view class="page">
     <view class="viewclass">
-        
+        <button class="buttonForm"   bindtap="onDailyClick">
+            实时票房
+        </button>
+        <button class="buttonForm"   bindtap="onWeekendClick">
+            周末票房
+        </button>
+        <button class="buttonForm"   bindtap="onWeekClick">
+            本周票房
+        </button>
     </view>
 
     <template name="carTemp">
