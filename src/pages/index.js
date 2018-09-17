@@ -60,6 +60,10 @@ Page({
             info["weekendhide"] = false;
             info["weekhide"] = true;
         }
+        // 按照总票房降序排列
+        weekendInfo.sort(function(a,b){
+            return b.weekendSum - a.weekendSum;
+        });
         this.setData({
             dayInfoArray: weekendInfo
         })
@@ -81,6 +85,10 @@ Page({
             info["weekhide"] = false;
         }
         // console.dir(weekInfo);
+        // 按照总票房降序排列
+        weekInfo.sort(function(a,b){
+            return b.weekSum - a.weekSum;
+        });
         this.setData({
             dayInfoArray: weekInfo
         })
